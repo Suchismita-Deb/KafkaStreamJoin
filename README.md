@@ -85,38 +85,18 @@ Input value.
   }
 }
 ```
-The dto file.
+The dto file.  
+
+Nested JSON structure (with key, value, and audit sections), each nested part should be represented as a separate DTO class in Java using Lombok.
 ```java
-import lombok.Data;
-
-@Data
-public class ProductDetails {
-    private Key key;
-    private Value value;
-    private Audit audit;
-
-    @Data
-    public static class Key {
-        private String catalogNumber;
-        private String country;
-    }
-
-    @Data
-    public static class Value {
-        private String catalogNumber;
-        private boolean isSelling;
-        private String model;
-        private String productId;
-        private String registrationId;
-        private String registrationNumber;
-        private String sellingStatusDate;
-        private String country;
-    }
-
-    @Data
-    public static class Audit {
-        private String eventName;
-        private String sourceSystem;
-    }
+public class KeyDto {
+    private String catalogNumber;
+    private String country;
+}
+```
+```java
+public class AuditDto {
+    private String eventName;
+    private String sourceSystem;
 }
 ```
