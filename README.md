@@ -60,3 +60,63 @@ The sales dto.
   "sourceSystem": "E-COMMERCE_PORTAL"
 }
 ```
+
+When the json value is nested then it has the nested class.
+Input value.
+```json
+{
+  "key": {
+    "catalog_number": "29525",
+    "country": "001"
+  },
+  "value": {
+    "catalog_number": "29525",
+    "is_selling": true,
+    "model": "29525",
+    "product_id": "int7218",
+    "registration_id": "int4123",
+    "registration_number": "REG03814",
+    "selling_status_date": "2023-06-30T18:21:31.000000Z",
+    "country": "001"
+  },
+  "audit": {
+    "event_name": "Registration",
+    "source_system": "RGR"
+  }
+}
+```
+The dto file.
+```java
+import lombok.Data;
+
+@Data
+public class ProductDetails {
+    private Key key;
+    private Value value;
+    private Audit audit;
+
+    @Data
+    public static class Key {
+        private String catalogNumber;
+        private String country;
+    }
+
+    @Data
+    public static class Value {
+        private String catalogNumber;
+        private boolean isSelling;
+        private String model;
+        private String productId;
+        private String registrationId;
+        private String registrationNumber;
+        private String sellingStatusDate;
+        private String country;
+    }
+
+    @Data
+    public static class Audit {
+        private String eventName;
+        private String sourceSystem;
+    }
+}
+```
