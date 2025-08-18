@@ -10,19 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ProductDetails {
-
     private String catalogNumber;
-    private String country;
-
-    // Product fields
     private boolean isSelling;
     private String model;
     private String productId;
     private String registrationId;
     private String registrationNumber;
-    private String sellingStatusDate;
-
-    // Audit fields
-    private String eventName;
-    private String sourceSystem;
+    private String sellingStatusDate;  // you may convert this to LocalDateTime if needed
+    private String country;
+//    private KeyDto key;
+    private AuditDto audit;
 }

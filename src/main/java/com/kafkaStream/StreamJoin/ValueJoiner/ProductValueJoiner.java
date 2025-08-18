@@ -1,5 +1,6 @@
 package com.kafkaStream.StreamJoin.ValueJoiner;
 
+import com.kafkaStream.StreamJoin.dto.KeyDto;
 import com.kafkaStream.StreamJoin.dto.MergedDetails;
 import com.kafkaStream.StreamJoin.dto.ProductDetails;
 import com.kafkaStream.StreamJoin.dto.SalesDetails;
@@ -9,19 +10,9 @@ public class ProductValueJoiner implements ValueJoiner<ProductDetails, SalesDeta
     @Override
     public MergedDetails apply(ProductDetails product, SalesDetails sales) {
         return MergedDetails.builder()
-                .catalogNumber(product.getCatalogNumber())
-                .country(product.getCountry())
-                .isSelling(product.isSelling())
-                .model(product.getModel())
-                .productId(product.getProductId())
-                .registrationId(product.getRegistrationId())
-                .registrationNumber(product.getRegistrationNumber())
-                .sellingStatusDate(product.getSellingStatusDate())
-                .orderNumber(sales.getOrderNumber())
-                .quantity(sales.getQuantity())
-                .salesDate(sales.getSalesDate())
-                .eventName(product.getEventName())
-                .sourceSystem(product.getSourceSystem())
+                .key(KeyDto.builder().catalogNumber(product.getCatalogNumber()).country(product.getCountry()).build())
+                .product(product)
+                .sales(sales)
                 .build();
     }
 }

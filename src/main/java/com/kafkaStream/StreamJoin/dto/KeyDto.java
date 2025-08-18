@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MergedDetails {
-    private KeyDto key;
-    private ProductDetails product;
-    private SalesDetails sales;
+public class KeyDto {
+    private String catalogNumber;
+    private String country;
 }

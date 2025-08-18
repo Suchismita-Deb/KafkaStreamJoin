@@ -100,3 +100,56 @@ public class AuditDto {
     private String sourceSystem;
 }
 ```
+```java
+public class ProductDetails {
+    private String catalogNumber;
+    private boolean isSelling;
+    private String model;
+    private String productId;
+    private String registrationId;
+    private String registrationNumber;
+    private String sellingStatusDate;  // you may convert this to LocalDateTime if needed
+    private String country;
+    private AuditDto audit;
+}
+```
+Simple key → primitive/String directly in DTO
+Composite key → separate DTO class
+
+Key is not in the ProductDetails as Kafka see the key and value separately.
+
+
+The final joined record should look like.
+```json
+{
+  "key": {
+    "catalogNumber": "29525",
+    "country": "001"
+  },
+  "product": {
+    "catalogNumber": "29525",
+    "isSelling": true,
+    "model": "29525",
+    "productId": "int7218",
+    "registrationId": "int4123",
+    "registrationNumber": "REG03814",
+    "sellingStatusDate": "2023-06-30T18:21:31.000000Z",
+    "country": "001",
+    "audit": {
+      "eventName": "Registration",
+      "sourceSystem": "RGR"
+    }
+  },
+  "sales": {
+    "catalogNumber": "29525",
+    "orderNumber": "03814",
+    "quantity": "2",
+    "salesDate": "2023-07-30T18:21:31.000000Z",
+    "country": "001",
+    "audit": {
+      "eventName": "Sales Event",
+      "sourceSystem": "SLS"
+    }
+  }
+}
+```
