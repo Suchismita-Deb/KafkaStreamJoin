@@ -140,7 +140,7 @@ When the catalogNumber and country are same it will send to topic_C. Modify the 
 
 
 Postman - GET - `http://localhost:8181/generate/Topic_A` Directly add dummy data to the Topic_A and Topic_B and the country and catalogNumber are same so it will add the data to Topic_C. It will be visible in the console.
-```json
+```
 2025-09-10T10:10:20.790+05:30  INFO 2728 --- [StreamJoin] [nio-8181-exec-3] c.k.StreamJoin.Producer.EventProducer    : Product event published successfully to TOPIC_B!
 Key = 29525-001 Value = MergedDetails(catalogNumber=29525, country=001, isSelling=false, model=29525, productId=int7218, registrationId=int4123, registrationNumber=REG03814, sellingStatusDate=2023-06-30T18:21:31.000000Z, orderNumber=ORD-5001, quantity=10, salesDate=2023-07-15T11:45:00.000000Z)
 ```
