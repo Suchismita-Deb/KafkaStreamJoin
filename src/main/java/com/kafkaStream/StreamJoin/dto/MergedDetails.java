@@ -27,8 +27,4 @@ public class MergedDetails {
     private String orderNumber;
     private String quantity;
     private String salesDate;
-
-    // Audit fields
-    private String eventName;
-    private String sourceSystem;
 }

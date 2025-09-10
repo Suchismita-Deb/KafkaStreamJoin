@@ -20,8 +20,6 @@ public class ProductValueJoiner implements ValueJoiner<ProductDetails, SalesDeta
                 .orderNumber(sales.getOrderNumber())
                 .quantity(sales.getQuantity())
                 .salesDate(sales.getSalesDate())
-                .eventName(product.getEventName())
-                .sourceSystem(product.getSourceSystem())
                 .build();
     }
 }

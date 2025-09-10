@@ -20,6 +20,6 @@ public class SalesDetails {
     private String salesDate;
 
     // Audit fields
-    private String eventName;
-    private String sourceSystem;
+//    private String eventName;
+//    private String sourceSystem;
 }

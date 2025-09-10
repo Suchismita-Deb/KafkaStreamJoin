@@ -22,7 +22,7 @@ public class ProductDetails {
     private String registrationNumber;
     private String sellingStatusDate;
 
-    // Audit fields
-    private String eventName;
-    private String sourceSystem;
+//    // Audit fields
+//    private String eventName;
+//    private String sourceSystem;
 }

@@ -39,9 +39,9 @@ public class ProducrDetailsStreamProcessor {
         JsonSerde<SalesDetails> salesDetailSerde = new JsonSerde<>(SalesDetails.class);
         JsonSerde<MergedDetails> mergedDetailSerde = new JsonSerde<>(MergedDetails.class);
 
-        KStream<String, ProductDetails> product = streamBuilder.stream( "TOPIC_A", Consumed.with(Serdes.String(), pdtDetailSerde));
-        KStream<String, SalesDetails> sales = streamBuilder.stream( "TOPIC_B", Consumed.with(Serdes.String(), salesDetailSerde));
-        KStream<String, MergedDetails> mergedPdt = streamBuilder.stream( "TOPIC_C", Consumed.with(Serdes.String(), mergedDetailSerde));
+        KStream<String, ProductDetails> product = streamBuilder.stream( "TOPIC_A", Consumed.with(Serdes.String(), pdtDetailSerde)) .selectKey((key, value) -> value.getCatalogNumber() + "-" + value.getCountry());
+        KStream<String, SalesDetails> sales = streamBuilder.stream( "TOPIC_B", Consumed.with(Serdes.String(), salesDetailSerde)) .selectKey((key, value) -> value.getCatalogNumber() + "-" + value.getCountry());
+//        KStream<String, MergedDetails> mergedPdt = streamBuilder.stream( "TOPIC_C", Consumed.with(Serdes.String(), mergedDetailSerde));
 
 
         KStream<String, MergedDetails> joinedStream = product.join(
